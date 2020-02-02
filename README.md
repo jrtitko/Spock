@@ -4,6 +4,12 @@
 **Official Site for Spock:** http://spockframework.org/  
 **Web Testing with GEB/Spock:** https://gebish.org/  
 
+**HamcrestMatcher:** http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html
+
+**GEB:** <br/>
+Install: brew tap homebrew/cask && brew cask install chromedriver <br/>
+Documentation: https://gebish.org/manual/current/ <br/>
+Example: https://github.com/geb/geb-example-gradle <br/>
 
 # IntelliJ IDEA Commands & Shortcuts
 
