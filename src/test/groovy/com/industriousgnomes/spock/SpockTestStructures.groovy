@@ -1,5 +1,6 @@
 package com.industriousgnomes.spock
 
+import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -83,6 +84,7 @@ class SpockTestStructures extends Specification {
     }
 
     @Unroll
+    @Ignore("Database not set up")
     def "Should test an 'expect..where' scenario with multi-variable data pipe: a=#a, b=#b, c=#c"() {
         expect:
             c == Math.max(a, b)

@@ -2,9 +2,11 @@ package com.industriousgnomes.spock
 
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Subject
 
+@Ignore("Controller not set up")
 class MockMvcSpec extends Specification {
 
     @Subject
