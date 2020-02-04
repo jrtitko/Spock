@@ -67,35 +67,14 @@ class MockSpec extends Specification {
             def item = "Tofu"
             def quantity = 1
 
-            logger.info(_) >> { throw new InvalidParameterException() }
+            logger.info(_) >> { throw new InvalidParameterException("failed") }
 
         when:
             def success = invoice.add(item, quantity)
 
         then:
-            thrown(InvalidParameterException)
-    }
-
-    def "Mutliple when then sections in a test"() {
-        given:
-            invoice.add("bananas", 2.0d)
-
-        when:
-            def total = invoice.getTotal()
-
-        then:
-            3 * pricing.getPrice(_ as String) >>> [ 0.50d, 1.00d, 2.00d ]
-            total == 7.5d
-
-        then:
-            invoice.add("apples", 3.0d)
-
-        when:
-            total = invoice.getTotal()
-
-        then:
-            4 * pricing.getPrice(_ as String) >>> [ 0.50d, 1.00d, 2.00d, 3.00d ]
-            total == 16.5d
+            def e = thrown(InvalidParameterException)
+            e.getMessage() == "failed"
     }
 
     def "Return multiple values from the same method using a String parameter"() {
@@ -122,6 +101,28 @@ class MockSpec extends Specification {
         then:
             3 * pricing.getPrice(_) >>> [ 0.50d, 1.00d ] >> { throw new InvalidParameterException()}
             thrown InvalidParameterException
+    }
+
+    def "Mutliple when then sections in a test"() {
+        given:
+            invoice.add("bananas", 2.0d)
+
+        when:
+            def total = invoice.getTotal()
+
+        then:
+            3 * pricing.getPrice(_ as String) >>> [ 0.50d, 1.00d, 2.00d ]
+            total == 7.5d
+
+        then:
+            invoice.add("apples", 3.0d)
+
+        when:
+            total = invoice.getTotal()
+
+        then:
+            4 * pricing.getPrice(_ as String) >>> [ 0.50d, 1.00d, 2.00d, 3.00d ]
+            total == 16.5d
     }
 
     def "Capture a parameter to interrogate where method returns a value"() {

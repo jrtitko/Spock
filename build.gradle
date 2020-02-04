@@ -38,16 +38,16 @@ dependencies {
     testImplementation "org.spockframework:spock-core:1.3-groovy-2.5"
 
     // optional dependencies for using Spock
-    testCompile "org.hamcrest:hamcrest-core:2.2"    // only necessary if Hamcrest matchers are used
-    testRuntime "net.bytebuddy:byte-buddy:1.10.6"   // allows mocking of classes (in addition to interfaces)
-    testRuntime "org.objenesis:objenesis:3.1"       // allows mocking of classes without default constructor (together with CGLIB)
+    testImplementation "org.hamcrest:hamcrest-core:2.2" // only necessary if Hamcrest matchers are used
+    testRuntimeOnly "net.bytebuddy:byte-buddy:1.10.6"   // allows mocking of classes (in addition to interfaces)
+    testRuntimeOnly "org.objenesis:objenesis:3.1"       // allows mocking of classes without default constructor (together with CGLIB)
 
     // Used in these examples, otherwise not necessary
     runtimeOnly 'com.h2database:h2' // For using in-memory database
 
     // GEB web testing
     testImplementation "org.gebish:geb-spock:3.3"
-    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:3.14.0"
+    testImplementation "org.seleniumhq.selenium:selenium-chrome-driver:3.14.0"
 }
 
 // GEB vvvvvvvvvvvvvvv

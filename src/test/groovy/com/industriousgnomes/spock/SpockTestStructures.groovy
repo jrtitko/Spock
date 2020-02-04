@@ -50,7 +50,7 @@ class SpockTestStructures extends Specification {
             //      - The number of times a line of code was called
             result == c
 
-        // The when:..there: combination can be repeated to evaluate multiple steps of a
+        // The when:..then: combination can be repeated to evaluate multiple steps of a
         // larger test.  However, every test should only test one thing.
         // An example would be an open, update, close of a database table where every step
         // is required to run the test.
@@ -61,6 +61,7 @@ class SpockTestStructures extends Specification {
 
         where:
             // Optional section for supplying data for tests
+            // Double vertical bars (||) are cosmetic and used to delineate inputs from results
             a | b || c
             3 | 1 || 1
             6 | 8 || 6
