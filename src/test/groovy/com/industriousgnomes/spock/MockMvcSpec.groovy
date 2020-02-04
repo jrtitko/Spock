@@ -10,8 +10,6 @@ class MockMvcSpec extends Specification {
     @Subject
     MyRestController myRestController
 
-    Context context
-
     MockMvc mockMvc
 
     def setup() {
@@ -24,7 +22,7 @@ class MockMvcSpec extends Specification {
 
         when:
             def response = mockMvc.perform(get("/myendpoint")
-                    .sessionAttr("myContext", context)
+                    .sessionAttr("myContext", "myContextValue")
                     .param("field1", "value1")
                     .param("field2", "value2"))
 

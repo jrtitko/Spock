@@ -35,9 +35,11 @@ class SpockTestAnnotations extends Specification {
     @Requires({ System.getProperty("os.name").contains("windows") })    // Run this test if the condition is true
     def "Run this test if on a windows machine"() { expect: true }
 
-    @Retry(count = 5, delay = 1000)     // Retries the test several times.  This is for flaky tests.  Defaults to 3 tries at 0ms.
+/*
     @Retry(exceptions = [IOException])  // Only retries if one of these exceptions is thrown
     @Retry(condition = { failure.message.contains('foo')})  // Only retries if the condition is true
+*/
+    @Retry(count = 5, delay = 1000)     // Retries the test several times.  This is for flaky tests.  Defaults to 3 tries at 0ms.
     def "Retry this flaky test"() { expect: true }
 
     @Timeout(value = 500, unit = TimeUnit.MICROSECONDS) // Puts a time limit on how long a test can take to run, units defaults to seconds
